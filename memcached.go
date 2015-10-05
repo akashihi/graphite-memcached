@@ -18,6 +18,7 @@ package main
 import (
 	"bufio"
 	"fmt"
+	"strings"
 	"net"
 )
 
@@ -30,16 +31,16 @@ func getStatusData(address string) ([]string, error) {
 	defer conn.Close()
 
 	fmt.Fprintf(conn, "stats\n")
+	reader := bufio.NewReader(conn)
 
 	var body []string
 	for {
-		reader := bufio.NewReader(conn)
 		line, err := reader.ReadString('\n')
 		if err != nil {
 			log.Error("Can't read statistics from memcache: %v", err)
 			return []string{}, err
 		}
-		if line == "END" {
+		if strings.HasPrefix(line, "END") {
 			return body, nil
 		}
 		body = append(body, line)
