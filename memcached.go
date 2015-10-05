@@ -17,6 +17,7 @@ package main
 
 import (
 	"bufio"
+	"fmt"
 	"net"
 )
 
@@ -27,6 +28,8 @@ func getStatusData(address string) ([]string, error) {
 		return []string{}, err
 	}
 	defer conn.Close()
+
+	fmt.Printf(conn, "stats\n")
 
 	var body []string
 	for {
