@@ -29,7 +29,7 @@ func getStatusData(address string) ([]string, error) {
 	}
 	defer conn.Close()
 
-	fmt.Printf(conn, "stats\n")
+	fmt.Fprintf(conn, "stats\n")
 
 	var body []string
 	for {
