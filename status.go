@@ -33,17 +33,17 @@ type Status struct {
 	BytesOut         string
 }
 
-var ItemsRX, _ = regexp.Compile(`curr_items:\s+(\d+)\s+`)
-var TotalItemsRX, _ = regexp.Compile(`total_items:\s+(\d+)\s+`)
-var ConnectionsRX, _ = regexp.Compile(`curr_connections:\s+(\d+)\s+`)
-var TotalConnectionsRX, _ = regexp.Compile(`total_connections:\s+(\d+)\s+`)
-var GetRX, _ = regexp.Compile(`cmd_get:\s+(\d+)\s+`)
-var SetRX, _ = regexp.Compile(`cmd_set:\s+(\d+)\s+`)
-var HitRX, _ = regexp.Compile(`get_hits:\s+(\d+)\s+`)
-var MissRX, _ = regexp.Compile(`get_misses:\s+(\d+)\s+`)
-var EvictRX, _ = regexp.Compile(`evictions:\s+(\d+)\s+`)
-var BytesInRx, _ = regexp.Compile(`bytes_read:\s+(\d+)\s+`)
-var BytesOutRx, _ = regexp.Compile(`bytes_written:\s+(\d+)\s+`)
+var ItemsRX, _ = regexp.Compile(`STAT\s+curr_items:\s+(\d+)\s+`)
+var TotalItemsRX, _ = regexp.Compile(`STAT\s+total_items:\s+(\d+)\s+`)
+var ConnectionsRX, _ = regexp.Compile(`STAT\s+curr_connections:\s+(\d+)\s+`)
+var TotalConnectionsRX, _ = regexp.Compile(`STAT\s+total_connections:\s+(\d+)\s+`)
+var GetRX, _ = regexp.Compile(`STAT\s+cmd_get:\s+(\d+)\s+`)
+var SetRX, _ = regexp.Compile(`STAT\s+cmd_set:\s+(\d+)\s+`)
+var HitRX, _ = regexp.Compile(`STAT\s+get_hits:\s+(\d+)\s+`)
+var MissRX, _ = regexp.Compile(`STAT\s+get_misses:\s+(\d+)\s+`)
+var EvictRX, _ = regexp.Compile(`STAT\s+evictions:\s+(\d+)\s+`)
+var BytesInRx, _ = regexp.Compile(`STAT\s+bytes_read:\s+(\d+)\s+`)
+var BytesOutRx, _ = regexp.Compile(`STAT\s+bytes_written:\s+(\d+)\s+`)
 
 func parse(statusData []string) Status {
 	var result = Status{}
